@@ -1,0 +1,2 @@
+# distribuida
+segundo hemisemestre
