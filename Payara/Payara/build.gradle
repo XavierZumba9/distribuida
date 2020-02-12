@@ -1,0 +1,35 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "gradle.plugin.fish.payara.gradle.plugins:payara-micro-gradle-plugin:1.0.3"
+	}
+}
+
+apply plugin: "fish.payara.micro-gradle-plugin"
+apply plugin: "war"
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile group: 'javax', name: 'javaee-api', version: '8.0.1'
+	
+	//POSTGRES
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.8'
+	//JDBC
+	compile group: 'org.apache.commons', name: 'commons-pool2', version: '2.7.0'
+	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.7.0'
+	
+}
+
+payaraMicro {
+    payaraVersion = '5.194'
+    deployWar = true
+    useUberJar = true
+    daemon = false
+}
